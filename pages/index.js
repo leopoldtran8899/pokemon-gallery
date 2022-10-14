@@ -4,6 +4,15 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className='bg-black text-white'>Hello there</div>
+    <div className=''>
+      <Head>
+        <title>Pokémon Gallery</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className=''>
+        Pokémon gallery
+      </div>
+      <div className=''></div>
+    </div>
   )
 }
