@@ -6,6 +6,7 @@ const nextConfig = {
     // loader: 'imgix',
     // path: 'https://example.com/myaccount/',
     domains: ['raw.githubusercontent.com'],
+    unoptimized: true
   },
 }
 
