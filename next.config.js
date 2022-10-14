@@ -3,8 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    loader: 'imgix',
-    path: 'https://example.com/myaccount/',
+    // loader: 'imgix',
+    // path: 'https://example.com/myaccount/',
+    domains: ['raw.githubusercontent.com'],
   },
 }
 
