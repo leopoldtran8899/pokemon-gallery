@@ -7,8 +7,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Voces', sans-serif;
-  background-color: #1b2526;
-  color:#b9c7c8;  
+  background-color: #00223b;
+  color:#00bcd9;  
 }
 
 a {
@@ -25,7 +25,7 @@ a {
     color-scheme: dark;
   }
   body {
-    color: #b9c7c8;
-    background: #1b2526;
+    background-color: #00223b;
+    color: #00bcd9;
   }
 }
