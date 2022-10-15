@@ -6,7 +6,9 @@ const nextConfig = {
     // loader: 'imgix',
     // path: 'https://example.com/myaccount/',
     domains: ['raw.githubusercontent.com'],
-    unoptimized: true
+    // unoptimized: true,
+    loader: 'imgix',
+    path: 'https://leopoldtran8899.github.io/pokemon-gallery/',
   },
 }
 

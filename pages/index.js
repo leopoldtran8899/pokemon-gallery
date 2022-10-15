@@ -7,7 +7,7 @@ import Pokebal from '../public/pokemon-ball.jpg'
 import { getPokemonById } from '../lib/pokemon'
 // import styles from '../styles/Home.module.css'
 
-export default function Home({pokemon1}) {
+export default function Home() {
   return (
     <div className='flex flex-col items-center justify-start h-screen px-2 py-4 bg-center bg-no-repeat bg-cover bg-pokebal sm:justify-center md:bg-contain md:bg-right md:block'>
       <Head>
