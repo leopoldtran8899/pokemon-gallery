@@ -77,7 +77,7 @@ module.exports = {
         '10vw': '10vw'
       },
       backgroundImage: {
-        'pokebal': "url('/pokemon-ball.jpg')"
+        'pokebal': "url('https://leopoldtran8899.github.io/pokemon-gallery/pokemon-ball.jpg')"
       }
     },
   },
