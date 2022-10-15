@@ -8,7 +8,7 @@ const nextConfig = {
     domains: ['raw.githubusercontent.com'],
     // unoptimized: true,
     loader: 'imgix',
-    path: 'https://leopoldtran8899.github.io/pokemon-gallery/',
+    path: '/public/',
   },
 }
 
