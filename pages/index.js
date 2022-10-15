@@ -3,12 +3,13 @@ import Image from 'next/image'
 import Button from '../components/Button'
 import PokémonInfoCard from '../components/PokemonInfoCard'
 import Magikarp from '../public/magikarp.png'
+import Pokebal from '../public/pokemon-ball.jpg'
 import { getPokemonById } from '../lib/pokemon'
 // import styles from '../styles/Home.module.css'
 
 export default function Home({pokemon1}) {
   return (
-    <div className='flex flex-col justify-start items-center py-4 px-2 h-screen bg-[url("../public/pokemon-ball.jpg")] bg-no-repeat bg-cover bg-center sm:justify-center md:bg-contain md:bg-right md:block'>
+    <div className='flex flex-col items-center justify-start h-screen px-2 py-4 bg-center bg-no-repeat bg-cover bg-pokebal sm:justify-center md:bg-contain md:bg-right md:block'>
       <Head>
         <title>Pokémon Gallery</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />

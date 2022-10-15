@@ -75,6 +75,9 @@ module.exports = {
       },
       spacing: {
         '10vw': '10vw'
+      },
+      backgroundImage: {
+        'pokebal': "url('/pokemon-ball.jpg')"
       }
     },
   },
