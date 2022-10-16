@@ -1,10 +1,29 @@
-Pokemon gallery
+# Pokemon Gallery
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+> WIP. This project is my attempt to learn [Next.js](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 
-First, run the development server:
+
+Pokemon Gallery allow users to browse all the Pokemons and view their state.
+This project is built using [PokéAPI](https://pokeapi.co/)
+
+## Project road map
+
+```text
+Features
+    │
+    │  
+    ├── Browsing: View all Pokemon 👈 WIP
+    │
+    ├── Searching: Search Pokemon by name or ID
+    │
+    ├── Filtering: Filter Pokemon by types, region
+    │
+    ├── Sorting: Sort Pokémon by ID, power, etc.
+```
+
+## Quick start
+
 
 ```bash
 npm run dev
