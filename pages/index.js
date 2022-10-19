@@ -1,11 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Button from '../components/Button'
-import PokémonInfoCard from '../components/PokemonInfoCard'
-import Magikarp from '../public/magikarp.png'
-import Pokebal from '../public/pokemon-ball.jpg'
-import { getPokemonById } from '../lib/pokemon'
-// import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import Button from '../components/Button';
+import Magikarp from '../public/magikarp.png';
 
 export default function Home() {
   return (
@@ -25,13 +21,13 @@ export default function Home() {
             layout='fill'
             objectFit='cover'
           />
-          {/* <PokémonInfoCard pokemon={pokemon1} /> */}
-          {/* <PokémonInfoCard pokemon={pokemon2} />
-        <PokémonInfoCard pokemon={pokemon3} />
-        <PokémonInfoCard pokemon={pokemon4} /> */}
         </div>
-        <Button linkTo={'/pokemon'} name='Browse Pokémons' />
-        <Button linkTo={'/pokemon'} name='Something else' />
+        <div className='h-11'>
+          <Button linkTo={'/pokemon'} name='Browse Pokémons' />
+        </div>
+        <div className='h-11'>
+          <Button linkTo={'/pokemon'} name='Something else' />
+        </div>
       </div>
     </div>
   );
