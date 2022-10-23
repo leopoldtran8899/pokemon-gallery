@@ -21,7 +21,9 @@ Features
     │
     ├── Sorting: Sort Pokémon by ID, power, etc.
     │
-    ├── Navigation: Add buttons, menu for easier naviation between pages
+    ├── Navigation: Add buttons, menu for easier naviation between pages 👈 WIP
+    │
+    ├── Tooltips
 ```
 
 ## Quick start

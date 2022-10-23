@@ -4,6 +4,7 @@ import PokemonInfoCard from '../../components/PokemonInfoCard';
 import { useState } from 'react';
 import { getPokemons } from '../../lib/pokemon';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const ItemPerPage = 10;
 const Pokemons = ({ pokemons, count }) => {
@@ -17,9 +18,13 @@ const Pokemons = ({ pokemons, count }) => {
     router.push('pokemon/' + e)
   };
   return (
-    <div className='flex flex-col items-center pt-3'>
-      <div className='mb-3 text-xl text-transparent uppercase font-display bg-gradient-to-r from-red-500 to-teal-500 bg-clip-text md:text-3xl'>
-        Pokémon
+    <div className='flex flex-col items-center pt-3 md:pt-6'>
+      <Head>
+        <title>Pokémon Gallery</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <div className='mb-3 text-2xl text-transparent uppercase md:text-3xl font-display bg-gradient-to-r from-red-500 to-teal-500 bg-clip-text'>
+        Pokémons
       </div>
       {/* Tool bar */}
       <div className='sticky top-0 z-40 flex flex-col items-start w-full px-3 pt-6 my-2 bg-indigo-800'>

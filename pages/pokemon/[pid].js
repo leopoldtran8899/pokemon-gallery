@@ -3,6 +3,14 @@ import { typeToColor } from '../../components/PokemonInfoCard';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
+import {
+  MdOutlineArrowBackIosNew,
+  MdOutlineArrowForwardIos,
+  MdHome,
+  MdListAlt,
+} from 'react-icons/md';
+import Link from 'next/link';
 const PokemonPage = () => {
   const [pokemon, setPokemon] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -10,21 +18,58 @@ const PokemonPage = () => {
   const { pid } = router.query;
   useEffect(() => {
     setLoading(true);
-    if(router.isReady) {
+    if (router.isReady) {
       getPokemonById(pid).then(res => {
         setPokemon(res);
         setLoading(false);
       });
     }
   }, [pid, router]);
-  if (isLoading) return <div className='flex flex-col items-center h-full p-3 text-2xl sm:p-6 xl:p-9'>Loading...</div>
-  if (!pokemon) return <p className='flex flex-col items-center h-full p-3 text-2xl sm:p-6 xl:p-9'>Sorry. No pokemon data</p>
+  if (isLoading)
+    return (
+      <div className='flex flex-col items-center h-full p-3 text-2xl sm:p-6 xl:p-9'>
+        Loading...
+      </div>
+    );
+  if (!pokemon)
+    return (
+      <p className='flex flex-col items-center h-full p-3 text-2xl sm:p-6 xl:p-9'>
+        Sorry. No pokemon data
+      </p>
+    );
   return (
     <div className='flex flex-col items-center h-full p-3 sm:p-6 xl:p-9'>
-      <div className='mb-3 text-xl text-center text-transparent uppercase sm:text-3xl bg-gradient-to-r from-red-500 to-teal-500 bg-clip-text font-display sm:mb-6'>
-        {pokemon.name}
+      <Head>
+        <title>Pokémon Gallery - {pokemon.name}</title>
+      </Head>
+      <div className='sticky top-0 z-30 flex flex-col items-center w-full py-4 mb-3 bg-indigo-800'>
+        <div className='text-2xl text-center text-transparent uppercase bg-gradient-to-r from-red-500 to-teal-500 bg-clip-text font-display w-fit sm:text-3xl'>
+          {pokemon.name}
+        </div>
+        <div className='flex flex-row mt-2 text-yellow-500'>
+          <div className='w-6 hover:text-yellow-200 hover:cursor-pointer'>
+            <Link href={'/'}>
+              <a>
+                <MdHome size={'100%'} />
+              </a>
+            </Link>
+          </div>
+          <div className='w-6 hover:text-yellow-200 hover:cursor-pointer'>
+            <MdOutlineArrowBackIosNew size={'100%'} />
+          </div>
+          <div className='w-6 hover:text-yellow-200 hover:cursor-pointer'>
+            <Link href={'/pokemon'}>
+              <a>
+                <MdListAlt size={'100%'} />
+              </a>
+            </Link>
+          </div>
+          <div className='w-6 hover:text-yellow-200 hover:cursor-pointer'>
+            <MdOutlineArrowForwardIos size={'100%'} />
+          </div>
+        </div>
       </div>
-      <div className='relative w-24 h-24 sm:w-28 sm:h-28'>
+      <div className='relative w-24 h-24 mb-2 sm:w-28 sm:h-28 md:w-36 md:h-32'>
         <Image
           src={
             pokemon.images.front_default

@@ -8,7 +8,7 @@ export default function Home() {
     <div className='flex flex-col items-center justify-start h-screen px-2 py-4 bg-center bg-no-repeat bg-cover bg-pokebal sm:justify-center md:bg-contain md:bg-right md:block'>
       <Head>
         <title>Pokémon Gallery</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' key="title"/>
       </Head>
       <div className='flex flex-col justify-start w-5/6 max-w-sm gap-y-3 md:relative md:inset-y-1/4 md:h-1/2 lg:left-10vw xl:left-1/4 md:justify-evenly md:gap-y-0'>
         <div className='p-2 text-2xl text-center text-transparent uppercase bg-center bg-no-repeat bg-cover md:text-3xl font-display bg-gradient-to-r from-red-500 to-teal-500 bg-clip-text shadow-burn'>
