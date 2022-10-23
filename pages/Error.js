@@ -1,4 +1,4 @@
-const Error = () => {
+const Error = ({props}) => {
   return(
     <div>Page not found</div>
   )

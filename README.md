@@ -20,6 +20,8 @@ Features
     ├── Filtering: Filter Pokemon by types, region
     │
     ├── Sorting: Sort Pokémon by ID, power, etc.
+    │
+    ├── Navigation: Add buttons, menu for easier naviation between pages
 ```
 
 ## Quick start

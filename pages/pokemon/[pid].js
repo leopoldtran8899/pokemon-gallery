@@ -1,7 +1,24 @@
 import { getPokemonById, getPokemonIds } from '../../lib/pokemon';
 import { typeToColor } from '../../components/PokemonInfoCard';
 import Image from 'next/image';
-const PokemonPage = ({ pokemon }) => {
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+const PokemonPage = () => {
+  const [pokemon, setPokemon] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+  const router = useRouter();
+  const { pid } = router.query;
+  useEffect(() => {
+    setLoading(true);
+    if(router.isReady) {
+      getPokemonById(pid).then(res => {
+        setPokemon(res);
+        setLoading(false);
+      });
+    }
+  }, [pid, router]);
+  if (isLoading) return <div className='flex flex-col items-center h-full p-3 text-2xl sm:p-6 xl:p-9'>Loading...</div>
+  if (!pokemon) return <p className='flex flex-col items-center h-full p-3 text-2xl sm:p-6 xl:p-9'>Sorry. No pokemon data</p>
   return (
     <div className='flex flex-col items-center h-full p-3 sm:p-6 xl:p-9'>
       <div className='mb-3 text-xl text-center text-transparent uppercase sm:text-3xl bg-gradient-to-r from-red-500 to-teal-500 bg-clip-text font-display sm:mb-6'>
@@ -12,7 +29,7 @@ const PokemonPage = ({ pokemon }) => {
           src={
             pokemon.images.front_default
               ? pokemon.images.front_default
-              : 'http://fakeimg.pl/400?font=museo'
+              : 'http://fakeimg.pl/96?font=museo'
           }
           alt='Picture of the Pokemon'
           layout='fill'
@@ -24,9 +41,7 @@ const PokemonPage = ({ pokemon }) => {
         <div className='mb-5 contents md:flex md:flex-row md:gap-x-6'>
           <div className='flex flex-col capitalize sm:flex-row sm:justify-between md:basis-1/2'>
             {/** Type */}
-            <div className='text-yellow-500 font-display'>
-              Types
-            </div>
+            <div className='text-yellow-500 font-display'>Types</div>
             <div className='flex flex-row justify-end flex-grow md:justify-start gap-x-3 sm:px-5'>
               <div
                 className={typeToColor(
@@ -46,9 +61,7 @@ const PokemonPage = ({ pokemon }) => {
           </div>
           <div className='flex flex-col capitalize sm:flex-row sm:justify-between md:basis-1/2'>
             {/** Abilities */}
-            <div className='text-yellow-500 font-display'>
-              Abilities
-            </div>
+            <div className='text-yellow-500 font-display'>Abilities</div>
             <div className='flex flex-row justify-end flex-grow md:justify-start gap-x-3 sm:px-5'>
               <div>{pokemon.abilities[0] ? pokemon.abilities[0].name : ''}</div>
               <div>{pokemon.abilities[1] ? pokemon.abilities[1].name : ''}</div>
@@ -57,10 +70,15 @@ const PokemonPage = ({ pokemon }) => {
         </div>
         <div className='flex flex-col mb-5 capitalize sm:flex-row'>
           {/** stats */}
-          <div className='text-yellow-500 font-display basis-1/12 sm:basis-1/6'>Stats</div>
+          <div className='text-yellow-500 font-display basis-1/12 sm:basis-1/6'>
+            Stats
+          </div>
           <div className='flex-grow sm:flex sm:flex-row sm:flex-wrap basis-10/12'>
             {pokemon.stats.map((stat, i) => (
-              <div className='flex flex-row justify-between capitalize sm:px-5 sm:basis-1/2 lg:basis-1/3' key={i}>
+              <div
+                className='flex flex-row justify-between capitalize sm:px-5 sm:basis-1/2 lg:basis-1/3'
+                key={i}
+              >
                 <div className='basis-1/2'>{stat.name.replace('-', ' ')}</div>
                 <div className='text-right basis-1/4'></div>
                 <div className='text-right basis-1/4'>{stat.value}</div>
@@ -70,7 +88,9 @@ const PokemonPage = ({ pokemon }) => {
         </div>
         <div className='flex flex-col mb-5 capitalize sm:flex-row'>
           {/** Moves*/}
-          <div className='text-yellow-500 font-display basis-1/12 sm:basis-1/6'>Moves</div>
+          <div className='text-yellow-500 font-display basis-1/12 sm:basis-1/6'>
+            Moves
+          </div>
           <div className='flex-grow sm:flex sm:flex-row sm:flex-wrap basis-10/12'>
             <div className='flex flex-row mb-3 text-yellow-600 capitalize border-b ext-red-500 sm:px-5 sm:basis-1/2 lg:basis-1/3 border-b-yellow-600'>
               <div className='basis-1/2'>Name</div>
@@ -103,30 +123,30 @@ const PokemonPage = ({ pokemon }) => {
     </div>
   );
 };
-export async function getStaticPaths() {
-  const res = await getPokemonIds();
+// export async function getStaticPaths() {
+//   const res = await getPokemonIds();
 
-  const paths = res.map(pokemon => ({
-    params: { pid: pokemon.id.toString() },
-  }));
+//   const paths = res.map(pokemon => ({
+//     params: { pid: pokemon.id.toString() },
+//   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false };
-}
-export async function getStaticProps(context) {
-  const { params } = context;
-  const { pid } = params;
-  const pokemon = await getPokemonById(pid);
-  if (pokemon) {
-    return {
-      props: { pokemon },
-    };
-  } else {
-    return {
-      props: {},
-    };
-  }
-}
+//   // We'll pre-render only these paths at build time.
+//   // { fallback: false } means other routes should 404.
+//   return { paths, fallback: false };
+// }
+// export async function getStaticProps(context) {
+//   const { params } = context;
+//   const { pid } = params;
+//   const pokemon = await getPokemonById(pid);
+//   if (pokemon) {
+//     return {
+//       props: { pokemon },
+//     };
+//   } else {
+//     return {
+//       props: {},
+//     };
+//   }
+// }
 
 export default PokemonPage;
